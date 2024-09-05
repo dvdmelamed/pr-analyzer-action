@@ -97,6 +97,12 @@ Before using this GitHub Action, you need to complete the following steps:
 
 This updated table reflects the inputs specified in your action.yml file, including the new `memory_id` input and the updated default value for `ignore_patterns`.
 
+## Packaging
+
+Use `vercel/ncc` to package the code and deps: 
+```
+ncc build index.js -o dist 
+```
 
 ## Environment Variables
 
