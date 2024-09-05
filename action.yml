@@ -1,0 +1,34 @@
+name: 'Custom Amazon Bedrock Agent Action'
+description: 'This GitHub Action leverages Amazon Bedrock Agent to analyze files in a pull request (PR) and provide feedback.'
+author: 'John Reilly Pospos <johnreilly.pospos@gmail.com>'
+inputs:
+  agent_id:
+    description: 'The ID of the Bedrock Agent to use.'
+    required: true
+  agent_alias_id:
+    description: 'The alias ID of the Bedrock Agent to use.'
+    required: true
+  memory_id:
+    description: 'By default, agents only remember information within a single conversation. Enabling memory allows agents to remember information across multiple sessions.'
+    required: false
+    default: ''
+  action_prompt:
+    description: 'The prompt to send to the Bedrock Agent for analysis.'
+    required: true
+    default: 'Given the relevant code changes above, provide a detailed analysis including potential improvements and security considerations.'
+  ignore_patterns:
+    description: 'Comma-separated list of glob patterns to ignore (similar to .gitignore).'
+    required: true
+    default: '**/*.md,docs/**,.github/**'
+  debug:
+    description: 'Enable debug logging'
+    required: false
+    default: false
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
+
+branding:
+  color: 'blue'
+  icon: 'code'
